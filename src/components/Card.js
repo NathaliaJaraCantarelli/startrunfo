@@ -5,8 +5,8 @@ class Card extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
+
     const superTrunfo = (cardTrunfoDado) => {
-      console.log('pelo menos chamou');
       if (cardTrunfoDado === true) {
         return <p data-testid="trunfo-card">Super Trunfo</p>;
       }
