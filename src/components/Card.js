@@ -11,6 +11,23 @@ class Card extends Component {
         return <p data-testid="trunfo-card">Super Trunfo</p>;
       }
     };
+
+    const buttonIDFunc = () => {
+      const { buttonID, key } = this.props;
+      if (buttonID) {
+        return (
+          <button
+            type="button"
+            data-testid="delete-button"
+            key={ key }
+            onClick={ buttonID }
+          >
+            Excluir
+          </button>
+        );
+      }
+    };
+
     return (
       <div>
         <h2 data-testid="name-card">{ cardName }</h2>
@@ -21,6 +38,7 @@ class Card extends Component {
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
         { superTrunfo(cardTrunfo) }
+        { buttonIDFunc() }
       </div>
     );
   }
@@ -35,6 +53,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  buttonID: PropTypes.bool.isRequired,
+  key: PropTypes.number.isRequired,
 };
 
 export default Card;

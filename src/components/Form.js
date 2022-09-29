@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ComponenteCheckbox from './ComponenteCheckbox';
+import ComponenteSuperTrunfo from './ComponenteSuperTrunfo';
 
 class Form extends Component {
   superTrunfo = () => {
-    const { hasTrunfo } = this.props;
+    const { hasTrunfo, cardTrunfo, onInputChange } = this.props;
+
     if (hasTrunfo === true) {
-      const trunfoInput = document.getElementsByName('trunfo-input');
-      trunfoInput[0].textContent = 'Você já tem um Super Trunfo em seu baralho';
+      return (
+        <ComponenteSuperTrunfo />
+      );
     }
+    return (
+      <ComponenteCheckbox
+        cardTrunfo={ cardTrunfo }
+        onInputChange={ onInputChange }
+      />
+    );
   };
 
   render() {
-    this.superTrunfo();
     const { cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
-      hasTrunfo, isSaveButtonDisabled, onInputChange,
+      cardAttr2, cardAttr3, cardImage, cardRare,
+      isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
-    console.log(hasTrunfo);
-    // const { estados } = (event) => this.setState = (
-    //   console.log(event.target.value)
-    // )
+
     return (
       <form>
         <label htmlFor="name-input">
@@ -90,16 +96,8 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-
         <label htmlFor="trunfo-input" name="trunfo-input">
-          <p name="cardTrunfo">Super Trunfo</p>
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            data-testid="trunfo-input"
-          />
+          { this.superTrunfo() }
         </label>
         <button
           type="button"

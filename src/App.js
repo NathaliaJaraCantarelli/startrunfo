@@ -21,6 +21,21 @@ class App extends React.Component {
     };
   }
 
+  botaoExcluir = (key) => {
+    const { baralho } = this.state;
+    const array = baralho;
+    array.splice(key, 1);
+    const superTrunfo = array.some((carta) => carta.cardTrunfo === true);
+    if (superTrunfo === false) {
+      this.setState(() => ({
+        hasTrunfo: false,
+      }));
+    }
+    this.setState(() => ({
+      baralho: array,
+    }));
+  };
+
   testaValoresAtt = (attr, nomeAttr) => {
     const attrValue = parseFloat(attr);
     const valueMax = 90;
@@ -155,6 +170,7 @@ class App extends React.Component {
               cardImage={ carta.cardImage }
               cardRare={ carta.cardRare }
               cardTrunfo={ carta.cardTrunfo }
+              buttonID={ () => { this.botaoExcluir(index); } }
             />
           ))}
         </ul>
