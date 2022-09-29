@@ -5,8 +5,8 @@ class Form extends Component {
   superTrunfo = () => {
     const { hasTrunfo } = this.props;
     if (hasTrunfo === true) {
-      const teste = document.getElementsByName('teste');
-      teste[0].textContent = 'Você já tem um Super Trunfo em seu baralho';
+      const trunfoInput = document.getElementsByName('trunfo-input');
+      trunfoInput[0].textContent = 'Você já tem um Super Trunfo em seu baralho';
     }
   };
 
@@ -90,17 +90,16 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="teste" name="teste">
-          <label htmlFor="trunfo-input" name="trunfo-input">
-            <p name="cardTrunfo">Super Trunfo</p>
-            <input
-              type="checkbox"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-              data-testid="trunfo-input"
-            />
-          </label>
+
+        <label htmlFor="trunfo-input" name="trunfo-input">
+          <p name="cardTrunfo">Super Trunfo</p>
+          <input
+            type="checkbox"
+            name="cardTrunfo"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+            data-testid="trunfo-input"
+          />
         </label>
         <button
           type="button"
