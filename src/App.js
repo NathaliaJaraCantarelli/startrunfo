@@ -16,6 +16,8 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      hasTrunfo: false,
+      baralho: [],
     };
   }
 
@@ -73,7 +75,30 @@ class App extends React.Component {
     });
   };
 
+  salvaCarta = () => {
+    const objetoPadrao = {};
+    const { baralho, cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+    objetoPadrao.cardName = cardName;
+    objetoPadrao.cardDescription = cardDescription;
+    objetoPadrao.cardAttr1 = cardAttr1;
+    objetoPadrao.cardAttr2 = cardAttr2;
+    objetoPadrao.cardAttr3 = cardAttr3;
+    objetoPadrao.cardImage = cardImage;
+    objetoPadrao.cardRare = cardRare;
+    objetoPadrao.cardTrunfo = cardTrunfo;
+    objetoPadrao.isSaveButtonDisabled = isSaveButtonDisabled;
+    const arrayCompleto = baralho;
+    arrayCompleto.push(objetoPadrao);
+    return arrayCompleto;
+  };
+
   onSaveButtonClick = () => {
+    const arrayCompleto = this.salvaCarta();
+    const superTrunfo = arrayCompleto.some((carta) => carta.cardTrunfo === true);
+    if (superTrunfo === true) {
+      this.setState(() => ({ hasTrunfo: true }));
+    }
     this.setState(() => ({
       cardName: '',
       cardDescription: '',
@@ -84,11 +109,12 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      baralho: arrayCompleto,
     }));
   };
 
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
+    const { cardName, cardDescription, hasTrunfo, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
@@ -105,6 +131,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
