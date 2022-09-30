@@ -18,8 +18,16 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       hasTrunfo: false,
       baralho: [],
+      filteredName: '',
     };
   }
+
+  handleFilter = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      filteredName: event.target.value,
+    });
+  };
 
   botaoExcluir = (key) => {
     const { baralho } = this.state;
@@ -68,7 +76,9 @@ class App extends React.Component {
   };
 
   habilitaBotao = () => {
-    let estadoVazio = Object.values(this.state).some((estadoAtual) => estadoAtual === '');
+    const tamanhoArray = 6;
+    let estadoVazio = Object.values(this.state)
+      .some((estadoAtual, index) => estadoAtual === '' && index < tamanhoArray);
     const somaAtual = this.somaAttr();
     const limite = 210;
     if ((somaAtual <= limite) && (estadoVazio === false)) {
@@ -129,8 +139,9 @@ class App extends React.Component {
   };
 
   render() {
-    const { cardName, cardDescription, baralho, hasTrunfo, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+    const { cardName, cardDescription, baralho, hasTrunfo, filteredName, cardAttr1,
+      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
+      isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo </h1>
@@ -158,6 +169,8 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <p>Filtro pelo nome</p>
+        <input type="text" data-testid="name-filter" onChange={ this.handleFilter } />
         <ul>
           { baralho.map((carta, index) => (
             <Card
@@ -172,7 +185,8 @@ class App extends React.Component {
               cardTrunfo={ carta.cardTrunfo }
               buttonID={ () => { this.botaoExcluir(index); } }
             />
-          ))}
+          )).filter((cartaFiltrada) => cartaFiltrada.props.cardName
+            .includes(filteredName) && cartaFiltrada)}
         </ul>
       </div>
     );
