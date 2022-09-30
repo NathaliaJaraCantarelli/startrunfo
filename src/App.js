@@ -13,19 +13,20 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'Normal',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       hasTrunfo: false,
       baralho: [],
       filteredName: '',
+      filteredRare: 'todas',
     };
   }
 
   handleFilter = (event) => {
-    console.log(event.target.value);
+    console.log(event.target.name);
     this.setState({
-      filteredName: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -139,8 +140,8 @@ class App extends React.Component {
   };
 
   render() {
-    const { cardName, cardDescription, baralho, hasTrunfo, filteredName, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
+    const { cardName, cardDescription, baralho, hasTrunfo, filteredName, filteredRare,
+      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
       <div>
@@ -170,7 +171,22 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <p>Filtro pelo nome</p>
-        <input type="text" data-testid="name-filter" onChange={ this.handleFilter } />
+        <input
+          name="filteredName"
+          type="text"
+          data-testid="name-filter"
+          onChange={ this.handleFilter }
+        />
+        <select
+          name="filteredRare"
+          data-testid="rare-filter"
+          onChange={ this.handleFilter }
+        >
+          <option>todas</option>
+          <option>normal</option>
+          <option>raro</option>
+          <option>muito raro</option>
+        </select>
         <ul>
           { baralho.map((carta, index) => (
             <Card
@@ -185,8 +201,14 @@ class App extends React.Component {
               cardTrunfo={ carta.cardTrunfo }
               buttonID={ () => { this.botaoExcluir(index); } }
             />
-          )).filter((cartaFiltrada) => cartaFiltrada.props.cardName
-            .includes(filteredName) && cartaFiltrada)}
+          )).filter((cardFilterName) => cardFilterName.props.cardName
+            .includes(filteredName) && cardFilterName)
+            .filter((cardFilterRare) => {
+              if ((cardFilterRare.props.cardRare === filteredRare)
+              || (filteredRare === 'todas')) {
+                return cardFilterRare;
+              } return null;
+            })}
         </ul>
       </div>
     );
