@@ -20,13 +20,15 @@ class App extends React.Component {
       baralho: [],
       filteredName: '',
       filteredRare: 'todas',
+      filteredSuperTrunfo: false,
     };
   }
 
-  handleFilter = (event) => {
-    console.log(event.target.name);
+  handleFilter = ({ target }) => {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    // console.log(target);
     this.setState({
-      [event.target.name]: event.target.value,
+      [target.name]: value,
     });
   };
 
@@ -142,7 +144,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, baralho, hasTrunfo, filteredName, filteredRare,
       cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled, filteredSuperTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo </h1>
@@ -187,6 +189,15 @@ class App extends React.Component {
           <option>raro</option>
           <option>muito raro</option>
         </select>
+        <label htmlFor="trunfo-filter" name="filteredSuperTrunfo">
+          Super Trunfo
+          <input
+            type="checkbox"
+            name="filteredSuperTrunfo"
+            data-testid="trunfo-filter"
+            onChange={ this.handleFilter }
+          />
+        </label>
         <ul>
           { baralho.map((carta, index) => (
             <Card
@@ -201,11 +212,22 @@ class App extends React.Component {
               cardTrunfo={ carta.cardTrunfo }
               buttonID={ () => { this.botaoExcluir(index); } }
             />
-          )).filter((cardFilterName) => cardFilterName.props.cardName
+          )).filter((cardFilterSuperTrunfo) => {
+            if (filteredSuperTrunfo) {
+              if (cardFilterSuperTrunfo.props.cardTrunfo) {
+                document.getElementsByName('filteredName')[0].disabled = true;
+                document.getElementsByName('filteredRare')[0].disabled = true;
+                return cardFilterSuperTrunfo;
+              } return null;
+            }
+            document.getElementsByName('filteredName')[0].disabled = false;
+            document.getElementsByName('filteredRare')[0].disabled = false;
+            return cardFilterSuperTrunfo;
+          }).filter((cardFilterName) => cardFilterName.props.cardName
             .includes(filteredName) && cardFilterName)
             .filter((cardFilterRare) => {
               if ((cardFilterRare.props.cardRare === filteredRare)
-              || (filteredRare === 'todas')) {
+                || (filteredRare === 'todas')) {
                 return cardFilterRare;
               } return null;
             })}
