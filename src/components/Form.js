@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ComponenteCheckbox from './ComponenteCheckbox';
 import ComponenteSuperTrunfo from './ComponenteSuperTrunfo';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Styles/Form.css';
 
 class Form extends Component {
   superTrunfo = () => {
@@ -27,9 +29,11 @@ class Form extends Component {
       onSaveButtonClick } = this.props;
 
     return (
-      <form>
-        <label htmlFor="name-input">
+      <form className="form-input">
+        <label htmlFor="name-input" className="mb-3">
+          <span>Nome </span>
           <input
+            className="form-control"
             type="text"
             name="cardName"
             value={ cardName }
@@ -37,8 +41,10 @@ class Form extends Component {
             data-testid="name-input"
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="description-input" className="mb-3">
+          <span>Descrição </span>
           <input
+            className="form-control"
             type="textarea"
             name="cardDescription"
             value={ cardDescription }
@@ -46,8 +52,10 @@ class Form extends Component {
             data-testid="description-input"
           />
         </label>
-        <label htmlFor="attr-input">
+        <label htmlFor="attr-input" className="mb-3">
+          <span>Força </span>
           <input
+            className="form-control"
             type="number"
             name="cardAttr1"
             max={ 90 }
@@ -56,7 +64,10 @@ class Form extends Component {
             onChange={ onInputChange }
             data-testid="attr1-input"
           />
+          <br />
+          <span>Ataque </span>
           <input
+            className="form-control"
             type="number"
             name="cardAttr2"
             max={ 90 }
@@ -65,7 +76,10 @@ class Form extends Component {
             onChange={ onInputChange }
             data-testid="attr2-input"
           />
+          <br />
+          <span>Defesa </span>
           <input
+            className="form-control"
             type="number"
             name="cardAttr3"
             max={ 90 }
@@ -75,17 +89,21 @@ class Form extends Component {
             data-testid="attr3-input"
           />
         </label>
-        <label htmlFor="image-input">
+        <label htmlFor="image-input" className="mb-3">
+          <span>Imagem </span>
           <input
+            className="form-control"
             type="text"
             name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
             data-testid="image-input"
           />
+          <span className="form-text">Use o link da imagem</span>
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="rare-input" className="mb-3">
           <select
+            className="form-control"
             name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
@@ -96,10 +114,12 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo-input" name="trunfo-input">
+        <label htmlFor="trunfo-input" name="trunfo-input" className="mb-3">
+          <span>Super Trunfo </span>
           { this.superTrunfo() }
         </label>
         <button
+          className="btn btn-secondary mb-3"
           type="button"
           name="isSaveButtonDisabled"
           disabled={ isSaveButtonDisabled }

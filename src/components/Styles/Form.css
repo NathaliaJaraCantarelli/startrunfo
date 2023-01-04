@@ -1,0 +1,12 @@
+.form-input {
+  border: 2px solid rgb(90, 89, 89);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+  height: 700px;
+  background-color: rgb(197, 196, 196);
+  padding: 20px;
+}
