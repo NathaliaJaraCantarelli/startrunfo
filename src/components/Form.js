@@ -29,106 +29,106 @@ class Form extends Component {
       onSaveButtonClick } = this.props;
 
     return (
-      <form className="form-input">
-        <label htmlFor="name-input" className="mb-3">
-          <span>Nome </span>
-          <input
-            className="form-control"
-            type="text"
-            name="cardName"
-            value={ cardName }
-            onChange={ onInputChange }
-            data-testid="name-input"
-          />
-        </label>
-        <label htmlFor="description-input" className="mb-3">
-          <span>Descrição </span>
-          <input
-            className="form-control"
-            type="textarea"
-            name="cardDescription"
-            value={ cardDescription }
-            onChange={ onInputChange }
-            data-testid="description-input"
-          />
-        </label>
-        <label htmlFor="attr-input" className="mb-3">
-          <span>Força </span>
-          <input
-            className="form-control"
-            type="number"
-            name="cardAttr1"
-            max={ 90 }
-            min={ 0 }
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-            data-testid="attr1-input"
-          />
-          <br />
-          <span>Ataque </span>
-          <input
-            className="form-control"
-            type="number"
-            name="cardAttr2"
-            max={ 90 }
-            min={ 0 }
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-            data-testid="attr2-input"
-          />
-          <br />
-          <span>Defesa </span>
-          <input
-            className="form-control"
-            type="number"
-            name="cardAttr3"
-            max={ 90 }
-            min={ 0 }
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-            data-testid="attr3-input"
-          />
-        </label>
-        <label htmlFor="image-input" className="mb-3">
-          <span>Imagem </span>
-          <input
-            className="form-control"
-            type="text"
-            name="cardImage"
-            value={ cardImage }
-            onChange={ onInputChange }
-            data-testid="image-input"
-          />
-          <span className="form-text">Use o link da imagem</span>
-        </label>
-        <label htmlFor="rare-input" className="mb-3">
-          <select
-            className="form-control"
-            name="cardRare"
-            value={ cardRare }
-            onChange={ onInputChange }
-            data-testid="rare-input"
+      <div className="all-form">
+        <form className="form-input">
+          <label htmlFor="name-input">
+            <span>Nome </span>
+            <input
+              className="form-control"
+              type="text"
+              name="cardName"
+              value={ cardName }
+              onChange={ onInputChange }
+              data-testid="name-input"
+            />
+          </label>
+          <label htmlFor="description-input">
+            <span>Descrição </span>
+            <input
+              className="form-control"
+              type="textarea"
+              name="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+              data-testid="description-input"
+            />
+          </label>
+          <label htmlFor="attr-input">
+            <span>Força </span>
+            <input
+              className="form-control"
+              type="number"
+              name="cardAttr1"
+              max={ 90 }
+              min={ 0 }
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              data-testid="attr1-input"
+            />
+            <span>Ataque </span>
+            <input
+              className="form-control"
+              type="number"
+              name="cardAttr2"
+              max={ 90 }
+              min={ 0 }
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              data-testid="attr2-input"
+            />
+            <span>Defesa </span>
+            <input
+              className="form-control"
+              type="number"
+              name="cardAttr3"
+              max={ 90 }
+              min={ 0 }
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              data-testid="attr3-input"
+            />
+          </label>
+          <label htmlFor="image-input">
+            <span>Imagem </span>
+            <input
+              className="form-control"
+              type="text"
+              name="cardImage"
+              value={ cardImage }
+              onChange={ onInputChange }
+              data-testid="image-input"
+            />
+            <span className="form-text">Use o link da imagem</span>
+          </label>
+          <label htmlFor="rare-input">
+            <select
+              className="form-control"
+              name="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+              data-testid="rare-input"
+            >
+              <option value="normal" selected>Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="trunfo-input" name="trunfo-input">
+            <span>Super Trunfo </span>
+            { this.superTrunfo() }
+          </label>
+          <button
+            className="btn btn-secondary mb-3"
+            type="button"
+            name="isSaveButtonDisabled"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
+            data-testid="save-button"
           >
-            <option value="normal" selected>Normal</option>
-            <option value="raro">Raro</option>
-            <option value="muito raro">Muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="trunfo-input" name="trunfo-input" className="mb-3">
-          <span>Super Trunfo </span>
-          { this.superTrunfo() }
-        </label>
-        <button
-          className="btn btn-secondary mb-3"
-          type="button"
-          name="isSaveButtonDisabled"
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-          data-testid="save-button"
-        >
-          Salvar
-        </button>
-      </form>
+            Salvar
+          </button>
+        </form>
+      </div>
     );
   }
 }
