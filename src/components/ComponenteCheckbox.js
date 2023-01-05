@@ -12,6 +12,7 @@ class ComponenteCheckbox extends Component {
           checked={ cardTrunfo }
           onChange={ onInputChange }
           data-testid="trunfo-input"
+          className="form-check-input"
         />
       </label>
     );

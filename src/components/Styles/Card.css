@@ -102,8 +102,6 @@ img {
 }
 
 .btn-excluir-card {
-  left: 42.5%;
   position: relative;
   top: 20px;
-  width: 70px;
 }

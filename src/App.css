@@ -1,9 +1,58 @@
 body {
-  background-color: rgb(182, 180, 180);
+  font-family: monospace;
+  position: relative;
+}
+
+body:before {
+  background-image: url('https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/2000x2000/products/6301/29775/Screen_Shot_2018-10-22_at_11.15.54_pm__18590.1540210677.png?c=2');
+  background-size: cover;
+  bottom: 0;
+  content: '';
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: -40px;
+  z-index: -3;
 }
 
 .form-card {
   align-items: center;
   display: flex;
+  justify-content: space-evenly;
+}
+
+.filtro-cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filtro-cards input, .filtro-cards select {
+  width: auto;
+}
+
+.super-trunfo-filtro {
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+}
+
+.super-trunfo-filtro p, .super-trunfo-filtro input {
+  margin: 0 10px;
+}
+
+.title-geral {
+  font-family: Atlas , monospace;
+  font-size: xx-large;
+  margin: 40px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }

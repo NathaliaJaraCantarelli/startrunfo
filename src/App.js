@@ -135,7 +135,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'Normal',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       baralho: arrayCompleto,
@@ -148,7 +148,7 @@ class App extends React.Component {
       isSaveButtonDisabled, filteredSuperTrunfo } = this.state;
     return (
       <div>
-        <h1>Tryunfo </h1>
+        <h1 className="title-geral">Tryunfo </h1>
         <div className="form-card">
           <Form
             onInputChange={ this.onInputChange }
@@ -175,32 +175,39 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-        <p>Filtro pelo nome</p>
-        <input
-          name="filteredName"
-          type="text"
-          data-testid="name-filter"
-          onChange={ this.handleFilter }
-        />
-        <select
-          name="filteredRare"
-          data-testid="rare-filter"
-          onChange={ this.handleFilter }
-        >
-          <option>todas</option>
-          <option>normal</option>
-          <option>raro</option>
-          <option>muito raro</option>
-        </select>
-        <label htmlFor="trunfo-filter" name="filteredSuperTrunfo">
-          Super Trunfo
+        <h2 className="title-geral">Filtros:</h2>
+        <div className="filtro-cards">
           <input
-            type="checkbox"
-            name="filteredSuperTrunfo"
-            data-testid="trunfo-filter"
+            placeholder="Filtro pelo nome"
+            className="form-control"
+            name="filteredName"
+            type="text"
+            data-testid="name-filter"
             onChange={ this.handleFilter }
           />
-        </label>
+          <select
+            className="form-control"
+            name="filteredRare"
+            data-testid="rare-filter"
+            onChange={ this.handleFilter }
+          >
+            <option>todas</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+          </select>
+          <label htmlFor="trunfo-filter" name="filteredSuperTrunfo">
+            <div className="super-trunfo-filtro">
+              <p>Super Trunfo </p>
+              <input
+                type="checkbox"
+                name="filteredSuperTrunfo"
+                data-testid="trunfo-filter"
+                onChange={ this.handleFilter }
+              />
+            </div>
+          </label>
+        </div>
         <ul>
           { baralho.map((carta, index) => (
             <Card

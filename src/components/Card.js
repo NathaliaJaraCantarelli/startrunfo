@@ -44,7 +44,7 @@ class Card extends Component {
               <p data-testid="attr2-card">{ cardAttr2 }</p>
             </div>
             <div className="atrr-div">
-              <span>Ataque </span>
+              <span>Defesa </span>
               <p data-testid="attr3-card">{ cardAttr3 }</p>
             </div>
           </div>

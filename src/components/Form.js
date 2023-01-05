@@ -91,6 +91,7 @@ class Form extends Component {
           <label htmlFor="image-input">
             <span>Imagem </span>
             <input
+              placeholder="Use o link da imagem"
               className="form-control"
               type="text"
               name="cardImage"
@@ -98,7 +99,6 @@ class Form extends Component {
               onChange={ onInputChange }
               data-testid="image-input"
             />
-            <span className="form-text">Use o link da imagem</span>
           </label>
           <label htmlFor="rare-input">
             <select
