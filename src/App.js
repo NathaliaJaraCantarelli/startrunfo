@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import BaralhoEstrelas from './baralho/BaralhoEstrelas';
 import './App.css';
 
 class App extends React.Component {
@@ -18,7 +19,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       hasTrunfo: false,
-      baralho: [],
+      baralho: [...BaralhoEstrelas],
       filteredName: '',
       filteredRare: 'todas',
       filteredSuperTrunfo: false,
@@ -27,7 +28,6 @@ class App extends React.Component {
 
   handleFilter = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    // console.log(target);
     this.setState({
       [target.name]: value,
     });
@@ -98,9 +98,7 @@ class App extends React.Component {
     this.setState(() => ({
       [target.name]: value,
     }), () => {
-      this.setState(() => ({
-        isSaveButtonDisabled: this.habilitaBotao(),
-      }));
+      this.setState(() => ({ isSaveButtonDisabled: this.habilitaBotao() }));
     });
   };
 
@@ -175,7 +173,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-        <h2 className="title-geral">Filtros:</h2>
+        <h2 className="title-geral">Cartas</h2>
         <div className="filtro-cards">
           <input
             placeholder="Filtro pelo nome"
@@ -230,9 +228,11 @@ class App extends React.Component {
                 return cardFilterSuperTrunfo;
               } return null;
             }
-            document.getElementsByName('filteredName')[0].disabled = false;
-            document.getElementsByName('filteredRare')[0].disabled = false;
-            return cardFilterSuperTrunfo;
+            if (document.getElementsByName('filteredName')[0]) {
+              document.getElementsByName('filteredName')[0].disabled = false;
+              document.getElementsByName('filteredRare')[0].disabled = false;
+              return cardFilterSuperTrunfo;
+            } return cardFilterSuperTrunfo;
           }).filter((cardFilterName) => cardFilterName.props.cardName
             .includes(filteredName) && cardFilterName)
             .filter((cardFilterRare) => {
