@@ -1,12 +1,13 @@
 body {
   font-family: monospace;
+  height: 100%;
   position: relative;
 }
 
 body:before {
-  background-image: url('https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/2000x2000/products/6301/29775/Screen_Shot_2018-10-22_at_11.15.54_pm__18590.1540210677.png?c=2');
-  background-size: cover;
-  bottom: 0;
+  background-image: url('./images/backgroundPage.jpg');
+  background-size: 100%;
+  bottom: -20px;
   content: '';
   left: 0;
   opacity: 0.5;
@@ -19,6 +20,7 @@ body:before {
 .form-card {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -48,11 +50,27 @@ body:before {
 .title-geral {
   font-family: Atlas , monospace;
   font-size: xx-large;
-  margin: 40px;
+  margin: 40px 0;
 }
 
 ul {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-left: -2rem;
+}
+
+@media ( max-width : 600px ) {
+  
+  .super-trunfo-filtro p, .super-trunfo-filtro input {
+    font-size: x-small;
+    margin: 0 2px;
+  }
+
+  .filtro-cards {
+    flex-wrap: wrap;
+    width: 90%;
+  }
+
 }

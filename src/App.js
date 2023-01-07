@@ -195,7 +195,7 @@ class App extends React.Component {
             <option>muito raro</option>
           </select>
           <label htmlFor="trunfo-filter" name="filteredSuperTrunfo">
-            <div className="super-trunfo-filtro">
+            <div className="super-trunfo-filtro form-control">
               <p>Super Trunfo </p>
               <input
                 type="checkbox"

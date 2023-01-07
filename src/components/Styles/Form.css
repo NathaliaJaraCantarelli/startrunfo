@@ -5,8 +5,11 @@
 .all-form {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  height: 690px;
+  margin: 30px 30px 50px;
   padding: 15px;
-  z-index: 0;
+  width: 470px;
+  z-index: -2;
 }
 
 .form-input {
@@ -25,7 +28,7 @@
 }
 
 .form-input:before {
-  background-image: url('https://static.scientificamerican.com/sciam/cache/file/8B819851-2DAD-4B3D-AF5270EACE5A5361_source.jpg?w=590&h=800&4F27CC97-4819-4142-B97585EF39DC1761');
+  background-image: url('../../images/background.jpg');
   background-size: cover;
   bottom: 0;
   content: '';
@@ -43,4 +46,47 @@
 
 .form-control, input {
   margin-bottom: 10px;
+}
+
+@media ( max-width : 600px ) {
+
+  .all-form {
+    height: 345px;
+    margin: 15px 15px 25px;
+    padding: 7.5px;
+    width: 235px;
+  }
+  
+  .form-input {
+    height: 330px;
+    width: 220px;
+  }
+  
+  .form-text {
+    color: aliceblue;
+  }
+
+  .form-control {
+    font-size: x-small;
+    height: 30px;
+  }
+
+  .all-form span {
+    font-size: x-small;
+  }
+
+  .all-form label {
+    align-content: space-around;
+    align-items: center;
+    display: flex;
+  }
+  
+  .form-control, input {
+    margin: 5px;
+  }
+
+  .btn {
+    font-size: x-small;
+    margin-bottom: 0 ! important;
+  }
 }
