@@ -1,4 +1,7 @@
-@import url('//db.onlinewebfonts.com/c/ec4255644539d7fcf668d99b0616bec0?family=Atlas') ;
+@font-face {
+  font-family: Atlas;
+  src: url(./AtlasV1.ttf);
+}
 
 .all {
   background-color: rgba(255, 255, 255, 0.2);
