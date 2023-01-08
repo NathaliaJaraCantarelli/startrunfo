@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/startrunfo/static/css/main.948b7baf.css",
+    "main.css": "/startrunfo/static/css/main.d3d45d0b.css",
     "main.js": "/startrunfo/static/js/main.30197e54.js",
     "static/media/backgroundPage.jpg": "/startrunfo/static/media/backgroundPage.9169b52556d884edb099.jpg",
     "static/media/AnaVermelha.jpg": "/startrunfo/static/media/AnaVermelha.c159a5f365b679aac551.jpg",
@@ -15,13 +15,14 @@
     "static/media/AnaNegra.jpg": "/startrunfo/static/media/AnaNegra.d647499b59088b83d4d1.jpg",
     "static/media/SuperNova.jpg": "/startrunfo/static/media/SuperNova.825cd9e34d5c0b74b0d6.jpg",
     "static/media/AnaMarrom.jpg": "/startrunfo/static/media/AnaMarrom.d220dc583b6692f5289d.jpg",
+    "static/media/AtlasV1.ttf": "/startrunfo/static/media/AtlasV1.d7bd487ce146794a9ac3.ttf",
     "static/media/Nebulosa.jpg": "/startrunfo/static/media/Nebulosa.e09cec5b3bb5c343a2be.jpg",
     "index.html": "/startrunfo/index.html",
-    "main.948b7baf.css.map": "/startrunfo/static/css/main.948b7baf.css.map",
+    "main.d3d45d0b.css.map": "/startrunfo/static/css/main.d3d45d0b.css.map",
     "main.30197e54.js.map": "/startrunfo/static/js/main.30197e54.js.map"
   },
   "entrypoints": [
-    "static/css/main.948b7baf.css",
+    "static/css/main.d3d45d0b.css",
     "static/js/main.30197e54.js"
   ]
 }
