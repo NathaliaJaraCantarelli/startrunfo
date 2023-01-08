@@ -3,13 +3,12 @@
 }
 
 .all-form {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   height: 690px;
   margin: 30px 30px 50px;
   padding: 15px;
   width: 470px;
-  z-index: -2;
 }
 
 .form-input {
@@ -56,12 +55,15 @@
     padding: 7.5px;
     width: 235px;
   }
-  
+}
+
+@media ( max-width : 600px ) {
+
   .form-input {
     height: 330px;
     width: 220px;
   }
-  
+
   .form-text {
     color: aliceblue;
   }
@@ -80,13 +82,13 @@
     align-items: center;
     display: flex;
   }
-  
+
   .form-control, input {
     margin: 5px;
   }
 
   .btn {
     font-size: x-small;
-    margin-bottom: 0 ! important;
+    margin-bottom: 0;
   }
 }

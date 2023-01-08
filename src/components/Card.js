@@ -9,14 +9,14 @@ class Card extends Component {
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
 
     const buttonIDFunc = () => {
-      const { buttonID, key } = this.props;
-      if (buttonID) {
+      const { buttonID, index } = this.props;
+      if (index >= 0) {
         return (
           <button
             className="btn-excluir-card btn btn-secondary mb-3"
             type="button"
             data-testid="delete-button"
-            key={ key }
+            index={ index }
             onClick={ buttonID }
           >
             Excluir
@@ -58,14 +58,28 @@ class Card extends Component {
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  cardAttr2: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  cardAttr3: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  buttonID: PropTypes.bool.isRequired,
-  key: PropTypes.number.isRequired,
+  buttonID: PropTypes.func,
+  index: PropTypes.number,
+};
+
+Card.defaultProps = {
+  index: -1,
+  buttonID: () => false,
 };
 
 export default Card;

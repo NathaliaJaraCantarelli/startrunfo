@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import BaralhoEstrelas from './baralho/BaralhoEstrelas';
+import salvaCarta from './functions/SalvaCarta';
 import './App.css';
 
 class App extends React.Component {
@@ -11,14 +12,14 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      hasTrunfo: false,
+      hasTrunfo: true,
       baralho: [...BaralhoEstrelas],
       filteredName: '',
       filteredRare: 'todas',
@@ -28,54 +29,39 @@ class App extends React.Component {
 
   handleFilter = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [target.name]: value,
-    });
+    this.setState({ [target.name]: value });
   };
 
   botaoExcluir = (key) => {
     const { baralho } = this.state;
     const array = baralho;
     array.splice(key, 1);
-    const superTrunfo = array.some((carta) => carta.cardTrunfo === true);
-    if (superTrunfo === false) {
-      this.setState(() => ({
-        hasTrunfo: false,
-      }));
+    const superTrunfo = array.some((carta) => carta.cardTrunfo);
+    if (!superTrunfo) {
+      this.setState({ hasTrunfo: false });
     }
-    this.setState(() => ({
-      baralho: array,
-    }));
+    this.setState({ baralho: array });
   };
 
   testaValoresAtt = (attr, nomeAttr) => {
-    const attrValue = parseFloat(attr);
+    let attrValue = parseInt(attr, 10);
     const valueMax = 90;
-    let valueAtual = attrValue;
     if (attrValue > valueMax) {
-      valueAtual = valueMax;
-      this.setState(() => ({
-        isSaveButtonDisabled: true,
-      }));
+      attrValue = valueMax;
+      this.setState({ isSaveButtonDisabled: true });
+    } else if ((Number.isNaN(attrValue)) || (attrValue < 0)) {
+      attrValue = 0;
+      this.setState({ isSaveButtonDisabled: true });
     }
-    if ((Number.isNaN(attrValue)) || (attrValue < 0)) {
-      valueAtual = 0;
-      this.setState(() => ({
-        isSaveButtonDisabled: true,
-      }));
-    }
-    this.setState(() => ({
-      [nomeAttr]: valueAtual,
-    }));
-    return valueAtual;
+    this.setState({ [nomeAttr]: attrValue });
+    return attrValue;
   };
 
   somaAttr = () => {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const cardAttrValue = this.testaValoresAtt(cardAttr1, 'cardAttr1');
-    const cardAttrValue2 = this.testaValoresAtt(cardAttr2, 'cardAttr2');
-    const cardAttrValue3 = this.testaValoresAtt(cardAttr3, 'cardAttr3');
-    const soma = cardAttrValue + cardAttrValue2 + cardAttrValue3;
+    const cardAttrValueTotal = [cardAttr1, cardAttr2, cardAttr3];
+    const soma = cardAttrValueTotal
+      .reduce((acc, curr, i) => acc + this.testaValoresAtt(curr, `cardAttr${i + 1}`), 0);
     return soma;
   };
 
@@ -85,9 +71,7 @@ class App extends React.Component {
       .some((estadoAtual, index) => estadoAtual === '' && index < tamanhoArray);
     const somaAtual = this.somaAttr();
     const limite = 210;
-    if ((somaAtual <= limite) && (estadoVazio === false)) {
-      estadoVazio = false;
-    } else if (somaAtual > limite) {
+    if (somaAtual > limite) {
       estadoVazio = true;
     }
     return estadoVazio;
@@ -95,43 +79,23 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState(() => ({
-      [target.name]: value,
-    }), () => {
+    this.setState(() => ({ [target.name]: value }), () => {
       this.setState(() => ({ isSaveButtonDisabled: this.habilitaBotao() }));
     });
   };
 
-  salvaCarta = () => {
-    const objetoPadrao = {};
-    const { baralho, cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
-    objetoPadrao.cardName = cardName;
-    objetoPadrao.cardDescription = cardDescription;
-    objetoPadrao.cardAttr1 = cardAttr1;
-    objetoPadrao.cardAttr2 = cardAttr2;
-    objetoPadrao.cardAttr3 = cardAttr3;
-    objetoPadrao.cardImage = cardImage;
-    objetoPadrao.cardRare = cardRare;
-    objetoPadrao.cardTrunfo = cardTrunfo;
-    objetoPadrao.isSaveButtonDisabled = isSaveButtonDisabled;
-    const arrayCompleto = baralho;
-    arrayCompleto.push(objetoPadrao);
-    return arrayCompleto;
-  };
-
   onSaveButtonClick = () => {
-    const arrayCompleto = this.salvaCarta();
-    const superTrunfo = arrayCompleto.some((carta) => carta.cardTrunfo === true);
-    if (superTrunfo === true) {
+    const arrayCompleto = salvaCarta(this.state);
+    const superTrunfo = arrayCompleto.some((carta) => carta.cardTrunfo);
+    if (superTrunfo) {
       this.setState(() => ({ hasTrunfo: true }));
     }
     this.setState(() => ({
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -144,9 +108,13 @@ class App extends React.Component {
     const { cardName, cardDescription, baralho, hasTrunfo, filteredName, filteredRare,
       cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, filteredSuperTrunfo } = this.state;
+
+    const filterName = document.getElementsByName('filteredName')[0];
+    const filterRare = document.getElementsByName('filteredRare')[0];
+
     return (
       <div>
-        <h1 className="title-geral">Tryunfo </h1>
+        <h1 className="title-geral">StarTrunfo </h1>
         <div className="form-card">
           <Form
             onInputChange={ this.onInputChange }
@@ -210,6 +178,7 @@ class App extends React.Component {
           { baralho.map((carta, index) => (
             <Card
               key={ index }
+              index={ index }
               cardName={ carta.cardName }
               cardDescription={ carta.cardDescription }
               cardAttr1={ carta.cardAttr1 }
@@ -223,14 +192,14 @@ class App extends React.Component {
           )).filter((cardFilterSuperTrunfo) => {
             if (filteredSuperTrunfo) {
               if (cardFilterSuperTrunfo.props.cardTrunfo) {
-                document.getElementsByName('filteredName')[0].disabled = true;
-                document.getElementsByName('filteredRare')[0].disabled = true;
+                filterName.disabled = true;
+                filterRare.disabled = true;
                 return cardFilterSuperTrunfo;
               } return null;
             }
-            if (document.getElementsByName('filteredName')[0]) {
-              document.getElementsByName('filteredName')[0].disabled = false;
-              document.getElementsByName('filteredRare')[0].disabled = false;
+            if (filterName) {
+              filterName.disabled = false;
+              filterRare.disabled = false;
               return cardFilterSuperTrunfo;
             } return cardFilterSuperTrunfo;
           }).filter((cardFilterName) => cardFilterName.props.cardName

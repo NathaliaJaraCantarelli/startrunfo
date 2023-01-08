@@ -62,7 +62,7 @@ ul {
 }
 
 @media ( max-width : 600px ) {
-  
+
   .super-trunfo-filtro p, .super-trunfo-filtro input {
     font-size: x-small;
     margin: 0 2px;

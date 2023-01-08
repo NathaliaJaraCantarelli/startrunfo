@@ -13,12 +13,14 @@ class Form extends Component {
       return (
         <ComponenteSuperTrunfo />
       );
-    }
-    return (
-      <ComponenteCheckbox
-        cardTrunfo={ cardTrunfo }
-        onInputChange={ onInputChange }
-      />
+    } return (
+      <>
+        <span>Super Trunfo </span>
+        <ComponenteCheckbox
+          cardTrunfo={ cardTrunfo }
+          onInputChange={ onInputChange }
+        />
+      </>
     );
   };
 
@@ -108,13 +110,12 @@ class Form extends Component {
               onChange={ onInputChange }
               data-testid="rare-input"
             >
-              <option value="normal" selected>Normal</option>
+              <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
             </select>
           </label>
           <label htmlFor="trunfo-input" name="trunfo-input">
-            <span>Super Trunfo </span>
             { this.superTrunfo() }
           </label>
           <button
@@ -136,9 +137,18 @@ class Form extends Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  cardAttr2: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  cardAttr3: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

@@ -147,7 +147,7 @@ const BaralhoEstrelas = [{
   cardAttr3: 40,
   cardImage: BuracoNegro,
   cardRare: muitoRaro,
-  cardTrunfo: false,
+  cardTrunfo: true,
   isSaveButtonDisabled: false,
 }];
 

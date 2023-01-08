@@ -1,13 +1,12 @@
 @import url('//db.onlinewebfonts.com/c/ec4255644539d7fcf668d99b0616bec0?family=Atlas') ;
 
 .all {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   height: 690px;
   margin: 30px 30px 50px;
   padding: 15px;
   width: 470px;
-  z-index: -2;
 }
 
 .card-view {
@@ -46,7 +45,7 @@ img {
 }
 
 .infos-card {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0 0 20px 20px;
   bottom: 0;
   display: flex;
@@ -76,11 +75,11 @@ img {
 }
 
 .normal-style {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .raro-style {
-  background-color: rgba(1, 68, 212, 0.4);
+  background-color: rgba(1, 68, 212, 0.3);
 }
 
 .raro-style h1, .raro-style h5 {
@@ -88,7 +87,7 @@ img {
 }
 
 .muito {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .super-trunfo-img {
@@ -98,7 +97,7 @@ img {
   right: 0;
   top: 360px;
   width: 70px;
-  z-index: 5;
+  z-index: 1;
 }
 
 .btn-excluir-card {
@@ -115,29 +114,29 @@ img {
     padding: 7.5px;
     width: 235px;
   }
-  
+
   .card-view {
     height: 330px;
     width: 220px;
   }
-  
+
   img {
     height: 200px;
     width: 220px;
   }
-  
+
   .infos-card {
     height: 130px;
     padding: 0 25px;
     width: 220px;
   }
-  
+
   .atrr-div {
     height: 15px;
     margin-bottom: 5px;
     padding: 1px;
   }
-  
+
   .atrr-div p, .atrr-div span, h5 {
     font-size: x-small;
   }
@@ -145,7 +144,7 @@ img {
   .infos-card h1 {
     font-size: small;
   }
-  
+
   .super-trunfo-img {
     border-radius: 50%;
     height: 70px;
@@ -153,13 +152,9 @@ img {
     right: 0;
     top: 180px;
     width: 35px;
-    z-index: 5;
   }
-  
+
   .btn-excluir-card {
-    position: relative;
     top: 10px;
   }
-  
 }
-
