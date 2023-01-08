@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/startrunfo/static/css/main.948b7baf.css",
+    "main.js": "/startrunfo/static/js/main.30197e54.js",
+    "static/media/backgroundPage.jpg": "/startrunfo/static/media/backgroundPage.9169b52556d884edb099.jpg",
+    "static/media/AnaVermelha.jpg": "/startrunfo/static/media/AnaVermelha.c159a5f365b679aac551.jpg",
+    "static/media/BuracoNegro.jpg": "/startrunfo/static/media/BuracoNegro.bd93cb7e55f8d9fb9e15.jpg",
+    "static/media/AnaAmarela.jpg": "/startrunfo/static/media/AnaAmarela.75ab0ee8a909a46c8022.jpg",
+    "static/media/AnaBranca.jpg": "/startrunfo/static/media/AnaBranca.647eb3d7e3ddbbcdcd58.jpg",
+    "static/media/Protoestrela.jpg": "/startrunfo/static/media/Protoestrela.2f46b7649122c2ba47e0.jpg",
+    "static/media/EstrelaDeNeutrons.jpg": "/startrunfo/static/media/EstrelaDeNeutrons.cf0aae751694009508eb.jpg",
+    "static/media/SupergiganteAzul.jpg": "/startrunfo/static/media/SupergiganteAzul.ba2ea58bc5cedf8edf94.jpg",
+    "static/media/GiganteVermelha.jpg": "/startrunfo/static/media/GiganteVermelha.708e65445d87ac4da27c.jpg",
+    "static/media/background.jpg": "/startrunfo/static/media/background.4e1ac280ff8c43eb9ae5.jpg",
+    "static/media/AnaNegra.jpg": "/startrunfo/static/media/AnaNegra.d647499b59088b83d4d1.jpg",
+    "static/media/SuperNova.jpg": "/startrunfo/static/media/SuperNova.825cd9e34d5c0b74b0d6.jpg",
+    "static/media/AnaMarrom.jpg": "/startrunfo/static/media/AnaMarrom.d220dc583b6692f5289d.jpg",
+    "static/media/Nebulosa.jpg": "/startrunfo/static/media/Nebulosa.e09cec5b3bb5c343a2be.jpg",
+    "index.html": "/startrunfo/index.html",
+    "main.948b7baf.css.map": "/startrunfo/static/css/main.948b7baf.css.map",
+    "main.30197e54.js.map": "/startrunfo/static/js/main.30197e54.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.948b7baf.css",
+    "static/js/main.30197e54.js"
+  ]
+}
