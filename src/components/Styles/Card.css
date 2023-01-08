@@ -157,4 +157,9 @@ img {
   .btn-excluir-card {
     top: 10px;
   }
+
+  .super-trunfo-img {
+    height: 40px;
+    width: 40px;
+  }
 }
